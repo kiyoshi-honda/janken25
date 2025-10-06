@@ -1,15 +1,34 @@
-# 作業計画
+# じゃんけん（CPU対戦）実装計画 2025-10-06
 
-現在、実行中の作業計画はありません。
+## 概要
+CPUと対戦するじゃんけんゲームの基本機能をSpring Bootで実装するための計画。
 
-ユーザーから「計画」の指示があった場合、このファイルに作業計画を記載します。
+## 関連ファイル
+- src/main/java/oit/is/z9999/kaizi/janken/JankenController.java
+- src/main/java/oit/is/z9999/kaizi/janken/JankenService.java
+- src/main/java/oit/is/z9999/kaizi/janken/model/JankenResult.java
+- src/main/resources/templates/janken.html
+- src/main/resources/templates/result.html
+- src/test/java/oit/is/z9999/kaizi/janken/JankenServiceTests.java
 
-## 計画作成時の注意事項
+## タスク一覧
+1. JankenResultモデルクラスの作成
+   - ユーザの手、CPUの手、勝敗結果を保持するクラス
+2. JankenServiceクラスの作成
+   - CPUの手を乱数で生成
+   - 勝敗判定ロジックを実装
+3. JankenControllerクラスの作成
+   - ユーザの手を受け取り、サービス層に処理を委譲
+   - 結果をテンプレートに渡して表示
+4. 画面（janken.html, result.html）の作成
+   - ユーザが手を選択できるフォーム
+   - 結果表示用画面
+5. テストコードの作成
+   - JankenServiceの勝敗判定ロジックの単体テスト
 
-- コードベースとdocsを読み込み、要件に関連性のあるファイルパスをすべて記載すること
-- 必要最小限の要件のみを記載すること
-- タスクを細分化し、優先順位をつけること
-- このフェーズではコードを書かない
+## 優先順位
+1 → 2 → 3 → 4 → 5 の順で実施
 
 ---
-*このファイルは「計画」フェーズで上書きされます*
+
+この計画に従い、実装フェーズを進めてください。
