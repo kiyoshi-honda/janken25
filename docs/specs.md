@@ -43,6 +43,25 @@
 - **場所**: `janken/src/test/java/oit/is/z9999/kaizi/janken/`
 - **説明**: Spring Boot コンテキストが正常にロードされることを確認する基本的なテスト
 
+### 3. じゃんけん（CPU対戦）機能
+- **モデルクラス**: JankenResult
+  - ユーザの手、CPUの手、勝敗結果を保持
+- **サービスクラス**: JankenService
+  - CPUの手を乱数で生成
+  - 勝敗判定ロジック（グー・チョキ・パーの組み合わせで「勝ち」「負け」「あいこ」を判定）
+  - playメソッドで結果生成
+- **コントローラクラス**: JankenController
+  - ユーザの手を受け取り、サービス層に処理を委譲
+  - 結果をテンプレートに渡して表示
+- **画面テンプレート**: janken.html, result.html
+  - janken.html: ユーザが手を選択できるフォーム
+  - result.html: 勝敗結果を表示
+- **テストコード**: JankenServiceTests, JankenControllerTests
+  - サービスの勝敗判定ロジックの単体テスト
+  - コントローラの画面遷移・レスポンス内容のテスト
+- **ブランチ運用**: feat/janken-cpu-game
+  - semantic commit・プッシュ・プルリクエスト
+
 ## プロジェクト構成
 
 ```
