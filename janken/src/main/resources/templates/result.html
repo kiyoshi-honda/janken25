@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>じゃんけん結果</title>
+</head>
+
+<body>
+  <h1>じゃんけん結果</h1>
+  <p>あなたの手：<span th:text="${result.userHand}"></span></p>
+  <p>CPUの手：<span th:text="${result.cpuHand}"></span></p>
+  <p>勝敗：<span th:text="${result.result}"></span></p>
+  <a href="/janken">もう一度勝負する</a>
+</body>
+
+</html>
