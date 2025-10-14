@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.mockito.Mockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
 @WebMvcTest(JankenController.class)
 class JankenControllerTests {
@@ -20,7 +21,10 @@ class JankenControllerTests {
 
   @Test
   void testShowJankenForm() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.get("/janken"))
+    // 認証ユーザでログインしてアクセス
+    mockMvc.perform(MockMvcRequestBuilders.get("/janken")
+        .with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user("yamada")
+            .password("tarou")))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.view().name("janken"));
   }
@@ -31,7 +35,10 @@ class JankenControllerTests {
     when(jankenService.play("グー")).thenReturn(mockResult);
 
     mockMvc.perform(MockMvcRequestBuilders.post("/janken/result")
-        .param("userHand", "グー"))
+        .param("userHand", "グー")
+        .with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user("yamada")
+            .password("tarou"))
+        .with(csrf()))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.view().name("result"))
         .andExpect(MockMvcResultMatchers.model().attributeExists("result"));
