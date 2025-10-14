@@ -31,4 +31,12 @@ public class JankenController {
     model.addAttribute("result", result);
     return "result";
   }
+
+  /**
+   * ルートパス（/）でじゃんけん選択画面を表示
+   */
+  @GetMapping("/")
+  public String showRootJanken() {
+    return "janken";
+  }
 }
