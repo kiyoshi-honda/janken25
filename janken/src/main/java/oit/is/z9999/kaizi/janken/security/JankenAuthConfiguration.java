@@ -28,14 +28,11 @@ public class JankenAuthConfiguration {
     // ハッシュ化されたパスワードを得るには，この授業のbashターミナルで下記のように末尾にユーザ名とパスワードを指定すると良い(要VPN)
     // $ sshrun htpasswd -nbBC 10 user1 isdev
     // ハッシュ値は同じにならないので注意
-
-    UserDetails user1 = User.withUsername("user1")
-        .password("{bcrypt}$2y$10$PoDJGb5ehJ/W15rcqaWzWOQNwL9TlXk9viRd8m4FPCx4/qCU.EvtO").roles("USER").build();
-    UserDetails user2 = User.withUsername("user2")
-        .password("{bcrypt}$2y$10$B.N15gE6a08tVypUntHhBOrLfl0vaVYM3seCI64G2iLptpfmkgBye").roles("USER").build();
+    UserDetails user1 = User.withUsername("ほんだ")
+        .password("{bcrypt}$2y$10$HTJJQkvSEmvrVrqo6hQELuV9rcmNALkuDGH/vimU6YnX8JVAog4Ru").roles("USER").build();
 
     // 生成したユーザをImMemoryUserDetailsManagerに渡す（いくつでも良い）
-    return new InMemoryUserDetailsManager(user1, user2);
+    return new InMemoryUserDetailsManager(user1);
   }
 
   /**
