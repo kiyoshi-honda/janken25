@@ -7,30 +7,15 @@
 </head>
 
 <body>
-  <h1>Janken GAME!</h1>
-  <div th:if="${entry}">
-    エントリー
-    <ul>
-      <li th:each="user : ${entry.users}">[[${user}]]</li>
-    </ul>
-  </div>
-  <div th:if="${yourName}">
-    Hi [[${yourName}]]
-  </div>
-  <div>
-    <a href="/jankengame?hand=Gu">ぐー</a>
-    <a href="/jankengame?hand=Choki">ちょき</a>
-    <a href="/jankengame?hand=Pa">ぱー</a>
-  </div>
-  <div th:if=${yourHand}>
-    あなたの手 [[${yourHand}]]
-  </div>
-  <div th:if=${cpuHand}>
-    相手の手 [[${cpuHand}]]
-  </div>
-  <div th:if=${kekka}>
-    結果 [[${kekka}]]
-  </div>
+  <h1>じゃんけんゲーム（CPU対戦）</h1>
+  <form th:action="@{/janken/result}" action="/janken/result" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <label>あなたの手を選択してください：</label><br>
+    <input type="radio" name="userHand" value="グー" required> グー
+    <input type="radio" name="userHand" value="チョキ"> チョキ
+    <input type="radio" name="userHand" value="パー"> パー<br><br>
+    <button type="submit">勝負！</button>
+  </form>
 </body>
 
 </html>
